@@ -3,1580 +3,1306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Russia | Магазин игровой валюты</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Graf.Decore - салон эксклюзивных штор</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --main-bg-color: #0a0a0a;
-            --accent-color: #ff0000;
-            --accent-dark: #cc0000;
-            --text-color: #ffffff;
-            --text-secondary: #cccccc;
-            --card-bg: #1a1a1a;
-            --card-hover: #252525;
-            --input-bg: #2a2a2a;
-            --success-color: #00cc66;
-            --warning-color: #ff9900;
-            --error-color: #ff4444;
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #f9eef5;
+            --secondary: #f0eefc;
+            --accent: #c5d9e9;
+            --accent-dark: #a2c8d8;
+            --text: #5a5a72;
+            --dark-text: #3a3a52;
+            --white: #fff;
+            --shadow: rgba(149, 157, 165, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
         body {
-            background-color: var(--main-bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
             overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            padding-top: 90px;
         }
-        
-        /* Анимированный фон */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 15% 50%, rgba(255, 0, 0, 0.05) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(255, 0, 0, 0.03) 0%, transparent 25%),
-                linear-gradient(45deg, transparent 49%, rgba(255, 0, 0, 0.02) 50%, transparent 51%),
-                linear-gradient(-45deg, transparent 49%, rgba(255, 0, 0, 0.02) 50%, transparent 51%);
-            background-size: 300px 300px, 250px 250px, 60px 60px, 40px 40px;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        /* Анимация частиц */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .particle {
-            position: absolute;
-            background-color: rgba(255, 0, 0, 0.3);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #000000 0%, #330000 100%);
-            width: 100%;
-            padding: 18px 0;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.25);
-            position: relative;
-            z-index: 10;
-            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-            background: linear-gradient(to right, #ff0000, #ff6666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-        
-        .logo-subtitle {
-            font-size: 14px;
-            color: var(--text-secondary);
-            letter-spacing: 1px;
-        }
-        
-        /* Main Content */
-        .main-content {
-            width: 100%;
-            max-width: 600px;
-            padding: 30px 20px;
-            margin: 0 auto;
-            text-align: center;
-            flex: 1;
-        }
-        
-        .welcome-text {
-            margin-bottom: 30px;
-        }
-        
-        .welcome-text h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
+            color: var(--dark-text);
         }
-        
-        .welcome-text p {
-            color: var(--text-secondary);
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-text);
+            display: flex;
+            align-items: center;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .logo i {
+            margin-right: 12px;
+            color: var(--accent-dark);
+            font-size: 36px;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav > ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav > ul > li {
+            position: relative;
+            margin: 0 5px;
+        }
+
+        .main-nav > ul > li > a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 12px 18px;
+            display: block;
+            border-radius: 30px;
             font-size: 16px;
         }
-        
-        /* Buttons */
-        .buy-button {
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 140px;
-            height: 140px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            margin: 30px auto;
+
+        .main-nav > ul > li > a:hover {
+            color: var(--accent-dark);
+            background: var(--primary);
+        }
+
+        .main-nav > ul > li > a.active {
+            color: var(--accent-dark);
+            background: var(--primary);
+        }
+
+        /* Dropdown menus */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            padding: 10px 0;
+        }
+
+        .main-nav > ul > li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown li {
+            list-style: none;
+        }
+
+        .dropdown li a {
+            padding: 12px 20px;
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .dropdown li a:hover {
+            background: var(--primary);
+            color: var(--accent-dark);
+            padding-left: 25px;
+        }
+
+        /* Mega menu */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
             display: flex;
-            flex-direction: column;
+            padding: 25px;
+            gap: 40px;
+        }
+
+        .mega-menu .mega-menu-column {
+            flex: 1;
+        }
+
+        .mega-menu .mega-menu-column h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .mega-menu .mega-menu-column ul {
+            list-style: none;
+        }
+
+        .mega-menu .mega-menu-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .mega-menu .mega-menu-column ul li a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 8px 0;
+            font-size: 15px;
+        }
+
+        .mega-menu .mega-menu-column ul li a:hover {
+            color: var(--accent-dark);
+            padding-left: 5px;
+        }
+
+        .has-mega-menu:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Header buttons */
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.35);
+            color: var(--dark-text);
+            text-decoration: none;
             transition: var(--transition);
+            position: relative;
+        }
+
+        .header-btn:hover {
+            background: var(--accent-dark);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .header-btn .count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--accent-dark);
+            color: var(--white);
+            font-size: 11px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
-        
-        .buy-button::before {
+
+        .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0));
-            transform: rotate(45deg);
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(162, 200, 216, 0.15);
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -300px;
+            left: -300px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(248, 215, 233, 0.2);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            animation: fadeIn 1s ease;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-dark);
+            color: var(--white);
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
             transition: var(--transition);
-            opacity: 0;
+            border: 2px solid var(--accent-dark);
+            font-size: 16px;
+            animation: fadeIn 2s ease;
         }
-        
-        .buy-button:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.5);
+
+        .btn:hover {
+            background: transparent;
+            color: var(--accent-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
         }
-        
-        .buy-button:hover::before {
-            opacity: 1;
-            animation: shine 1.5s infinite;
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-dark);
+            border: 2px solid var(--accent-dark);
         }
-        
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%) rotate(45deg);
-            }
-            100% {
-                transform: translateX(100%) rotate(45deg);
-            }
+
+        .btn-outline:hover {
+            background: var(--accent-dark);
+            color: var(--white);
         }
-        
-        .buy-button i {
-            font-size: 36px;
+
+        /* Section styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent-dark);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 18px;
+        }
+
+        /* About section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: var(--dark-text);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--accent-dark);
+            line-height: 1;
+            margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            color: var(--text);
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Services section */
+        .services {
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(162, 200, 216, 0.1)" stroke-width="1"/></svg>');
+            z-index: 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(162, 200, 216, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent);
+        }
+
+        .service-card i {
+            font-size: 60px;
+            color: var(--accent-dark);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .service-card p {
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .service-card .btn {
+            padding: 12px 25px;
+            font-size: 15px;
+        }
+
+        /* Categories section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 280px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: var(--white);
+        }
+
+        .category-overlay h3 {
+            color: var(--white);
+            font-size: 24px;
             margin-bottom: 10px;
         }
-        
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+
+        .category-overlay p {
+            font-size: 15px;
+            opacity: 0.9;
         }
-        
-        .action-button {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            color: var(--text-color);
-            border: 1px solid #444;
-            border-radius: var(--border-radius);
-            padding: 16px 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
+
+        /* Contact section */
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-info-item i {
+            font-size: 24px;
+            color: var(--accent-dark);
+            margin-right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            flex-shrink: 0;
             transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        
-        .action-button:hover {
-            background: linear-gradient(135deg, #333 0%, #222 100%);
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.2);
+
+        .contact-info-item:hover i {
+            background: var(--accent-dark);
+            color: var(--white);
+            transform: rotate(10deg);
         }
-        
-        .action-button i {
-            font-size: 18px;
-        }
-        
-        /* Stats */
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .stat-item {
-            background: rgba(42, 42, 42, 0.5);
-            border-radius: var(--border-radius);
-            padding: 15px;
-            min-width: 140px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .stat-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--accent-color);
+
+        .contact-info-text h3 {
+            font-size: 20px;
             margin-bottom: 5px;
         }
-        
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-secondary);
+
+        .contact-info-text p {
+            font-size: 16px;
         }
-        
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
-            padding: 20px;
-            text-align: center;
-            margin-top: auto;
-            border-top: 1px solid rgba(255, 0, 0, 0.2);
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
         }
-        
-        .support-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 10px;
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
             transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
         }
-        
-        .support-link:hover {
-            color: #ff6666;
-            text-decoration: underline;
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent-dark);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(162, 200, 216, 0.3);
         }
-        
-        /* Modals */
-        .modal {
+
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a5a72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 16px;
+        }
+
+        /* Map */
+        .map-container {
+            margin-top: 60px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: var(--white);
+            padding: 80px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--white);
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-dark);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-size: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-dark);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-dark);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 15px;
+            opacity: 0.7;
+        }
+
+        /* Loading animation */
+        .loader {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 9999;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .modal.active {
-            display: flex;
-            opacity: 1;
-        }
-        
-        .modal-content {
-            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            border-radius: var(--border-radius);
-            width: 100%;
-            max-width: 500px;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-        
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-        }
-        
-        .modal-title {
-            font-size: 20px;
-            font-weight: 600;
-        }
-        
-        .close-button {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 24px;
-            cursor: pointer;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-        
-        .close-button:hover {
-            background: rgba(255, 0, 0, 0.2);
-            color: var(--accent-color);
-        }
-        
-        .modal-body {
-            padding: 20px;
-        }
-        
-        /* Server Grid */
-        .server-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        
-        .server-item {
-            background: var(--input-bg);
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 15px 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .server-item:hover {
-            background: var(--card-hover);
-            border-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
-        }
-        
-        .server-number {
-            color: var(--accent-color);
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-        
-        .server-name {
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        
-        .server-amount {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-        
-        /* Form Elements */
-        .input-group {
-            margin-bottom: 20px;
-        }
-        
-        .input-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            text-align: left;
-        }
-        
-        .amount-input, .bank-input {
-            width: 100%;
-            padding: 14px;
-            border-radius: var(--border-radius);
-            border: 1px solid #444;
-            background-color: var(--input-bg);
-            color: var(--text-color);
-            font-size: 16px;
-            transition: var(--transition);
-        }
-        
-        .amount-input:focus, .bank-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
-        }
-        
-        .error-message {
-            color: var(--error-color);
-            font-size: 14px;
-            margin-top: 5px;
-            text-align: left;
-            display: none;
-        }
-        
-        /* Summary Sections */
-        .calculation, .order-summary, .payment-details {
-            background: var(--input-bg);
-            padding: 18px;
-            border-radius: var(--border-radius);
-            margin: 18px 0;
-            border: 1px solid #444;
-        }
-        
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-        }
-        
-        .summary-label {
-            color: var(--text-secondary);
-        }
-        
-        .summary-value {
-            font-weight: 600;
-        }
-        
-        .calculation-line {
-            display: flex;
-            justify-content: space-between;
-            margin: 8px 0;
-        }
-        
-        /* Buttons in Modals */
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-        }
-        
-        .modal-button {
-            flex: 1;
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            padding: 14px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .modal-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-        }
-        
-        .modal-button.secondary {
-            background: linear-gradient(135deg, #444 0%, #333 100%);
-        }
-        
-        .modal-button.secondary:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Payment Methods */
-        .payment-methods {
-            display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
         }
-        
-        .payment-method {
-            background: var(--input-bg);
-            border: 1px solid #444;
-            border-radius: var(--border-radius);
-            padding: 18px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .payment-method:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.1);
-        }
-        
-        .payment-method i {
-            font-size: 28px;
-            color: var(--accent-color);
-        }
-        
-        .payment-method-content {
-            flex: 1;
-        }
-        
-        .payment-method-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .payment-method-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-        
-        /* History */
-        .history-list {
-            max-height: 300px;
-            overflow-y: auto;
-            margin: 20px 0;
-        }
-        
-        .history-item {
-            background: var(--input-bg);
-            border: 1px solid #444;
-            border-radius: var(--border-radius);
-            padding: 15px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .history-item:hover {
-            border-color: var(--accent-color);
-            transform: translateX(5px);
-        }
-        
-        .history-order-id {
-            color: var(--accent-color);
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .history-details {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-        
-        .history-details div {
-            margin-bottom: 4px;
-        }
-        
-        .empty-history {
-            text-align: center;
-            color: var(--text-secondary);
-            padding: 30px;
-        }
-        
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .loading-spinner {
-            border: 4px solid #333;
-            border-top: 4px solid var(--accent-color);
+
+        .loader-circle {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            border: 5px solid var(--primary);
+            border-top: 5px solid var(--accent-dark);
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            margin-bottom: 20px;
         }
-        
+
+        .loader-text {
+            font-size: 16px;
+            color: var(--dark-text);
+            letter-spacing: 2px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-        /* Responsive */
-        @media (max-width: 600px) {
-            .main-content {
-                padding: 20px 15px;
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .main-nav > ul > li > a {
+                padding: 10px 15px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            body {
+                padding-top: 80px;
             }
             
-            .buy-button {
-                width: 120px;
-                height: 120px;
-                font-size: 16px;
-            }
-            
-            .buy-button i {
-                font-size: 30px;
-            }
-            
-            .server-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .modal-buttons {
+            .header-content {
                 flex-direction: column;
             }
             
-            .stats {
-                flex-direction: column;
-                align-items: center;
+            .logo {
+                margin-bottom: 15px;
             }
             
-            .stat-item {
+            .main-nav {
                 width: 100%;
-                max-width: 200px;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .main-nav > ul {
+                flex-wrap: nowrap;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+            
+            .about-text, .about-image {
+                flex: 100%;
+                padding-right: 0;
+            }
+            
+            .mega-menu {
+                flex-direction: column;
+                width: 100%;
+                left: 0;
             }
         }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+            
+            .service-card {
+                padding: 30px 20px;
+            }
+            
+            .contact-form {
+                padding: 30px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .footer-column {
+                text-align: center;
+            }
+            
+            .footer-column h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
         }
-        
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-dark);
+
+        @media (max-width: 576px) {
+            .header-buttons {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+            }
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background Particles -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">Black Russia</div>
-        <div class="logo-subtitle">МАГАЗИН ИГРОВОЙ ВАЛЮТЫ</div>
-    </header>
-    
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="welcome-text">
-            <h2>Добро пожаловать!</h2>
-            <p>Покупка игровой валюты стала еще проще и безопаснее</p>
-        </div>
-        
-        <button class="buy-button" onclick="openServerModal()">
-            <i class="fas fa-coins"></i>
-            Купить
-        </button>
-        
-        <div class="action-buttons">
-            <button class="action-button" onclick="openHistoryModal()">
-                <i class="fas fa-history"></i>
-                История операций
-            </button>
-            <button class="action-button" onclick="openSupport()">
-                <i class="fas fa-headset"></i>
-                Поддержка
-            </button>
-        </div>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">76</div>
-                <div class="stat-label">Серверов</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">2.5M+</div>
-                <div class="stat-label">Монет в наличии</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">5 мин</div>
-                <div class="stat-label">Среднее время</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div>© 2023 Black Russia. Все права защищены.</div>
-        <a href="https://t.me/mmaajorka" class="support-link" target="_blank">
-            <i class="fab fa-telegram"></i>
-            Техническая поддержка
-        </a>
-    </footer>
-    
-    <!-- Server Selection Modal -->
-    <div class="modal" id="serverModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Выберите сервер</h2>
-                <button class="close-button" onclick="closeModal('serverModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="server-grid" id="serverList">
-                    <!-- Servers will be populated by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Amount Input Modal -->
-    <div class="modal" id="amountModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="selectedServerTitle">Покупка на сервере</h2>
-                <button class="close-button" onclick="closeModal('amountModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group">
-                    <label class="input-label" for="amountInput">Количество монет:</label>
-                    <input type="text" id="amountInput" class="amount-input" placeholder="Минимум 2.500.000" oninput="formatNumberInput(this)">
-                    <div class="error-message" id="amountError">Минимальная сумма покупки: 2.500.000 монет</div>
-                    <div class="server-amount" id="availableAmount">Доступно на сервере: 0 монет</div>
-                </div>
-                
-                <div class="calculation">
-                    <div class="calculation-line">
-                        <span>Курс:</span>
-                        <span>1.000.000 монет = 105 руб.</span>
-                    </div>
-                    <div class="calculation-line">
-                        <span>Сумма к оплате:</span>
-                        <span id="totalPrice">0 руб.</span>
-                    </div>
-                </div>
-                
-                <div class="modal-buttons">
-                    <button class="modal-button" id="continueButton" disabled onclick="openBankModal()">
-                        <i class="fas fa-arrow-right"></i>
-                        Продолжить
-                    </button>
-                    <button class="modal-button secondary" onclick="backToServerSelection()">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Bank Details Modal -->
-    <div class="modal" id="bankModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Введите реквизиты</h2>
-                <button class="close-button" onclick="closeModal('bankModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group">
-                    <label class="input-label" for="bankAccount">Банковский счет:</label>
-                    <input type="text" id="bankAccount" class="bank-input" placeholder="Номер вашего счета" oninput="validateBankDetails()">
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label" for="accountName">Название счета:</label>
-                    <input type="text" id="accountName" class="bank-input" placeholder="Как называется ваш счет" oninput="validateBankDetails()">
-                </div>
-                
-                <div class="modal-buttons">
-                    <button class="modal-button secondary" onclick="backToAmountInput()">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад
-                    </button>
-                    <button class="modal-button" id="confirmBankButton" disabled onclick="openConfirmationModal()">
-                        <i class="fas fa-check"></i>
-                        Подтвердить
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Confirmation Modal -->
-    <div class="modal" id="confirmationModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Подтверждение заказа</h2>
-                <button class="close-button" onclick="closeModal('confirmationModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="order-summary">
-                    <div class="summary-item">
-                        <span class="summary-label">Номер заказа:</span>
-                        <span class="summary-value" id="confirmOrderId">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Сервер:</span>
-                        <span class="summary-value" id="confirmServer">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Количество валюты:</span>
-                        <span class="summary-value" id="confirmAmount">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Сумма к оплате:</span>
-                        <span class="summary-value" id="confirmPrice">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Банковский счет:</span>
-                        <span class="summary-value" id="confirmBankAccount">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Название счета:</span>
-                        <span class="summary-value" id="confirmAccountName">-</span>
-                    </div>
-                </div>
-                
-                <div class="modal-buttons">
-                    <button class="modal-button secondary" onclick="backToBankDetails()">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад
-                    </button>
-                    <button class="modal-button" onclick="openPaymentMethodModal()">
-                        <i class="fas fa-credit-card"></i>
-                        Перейти к оплате
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Payment Method Modal -->
-    <div class="modal" id="paymentMethodModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Выберите способ оплаты</h2>
-                <button class="close-button" onclick="closeModal('paymentMethodModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="payment-details">
-                    <div class="summary-item">
-                        <span class="summary-label">Сумма к оплате:</span>
-                        <span class="summary-value" id="paymentAmount">-</span>
-                    </div>
-                </div>
-                
-                <div class="payment-methods">
-                    <div class="payment-method" onclick="openUsdtPaymentModal()">
-                        <i class="fab fa-bitcoin"></i>
-                        <div class="payment-method-content">
-                            <div class="payment-method-title">USDT</div>
-                            <div class="payment-method-desc">Криптовалюта</div>
-                        </div>
-                    </div>
-                    
-                    <div class="payment-method" onclick="openCardPaymentModal()">
-                        <i class="fas fa-credit-card"></i>
-                        <div class="payment-method-content">
-                            <div class="payment-method-title">Банковская карта</div>
-                            <div class="payment-method-desc">ЮMoney</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="modal-button secondary" onclick="backToConfirmation()">
-                    <i class="fas fa-arrow-left"></i>
-                    Назад
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- USDT Payment Modal -->
-    <div class="modal" id="usdtPaymentModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Оплата USDT</h2>
-                <button class="close-button" onclick="closeModal('usdtPaymentModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="payment-details">
-                    <div class="summary-item">
-                        <span class="summary-label">Сумма к оплате:</span>
-                        <span class="summary-value" id="usdtAmount">-</span>
-                    </div>
-                </div>
-                
-                <div class="calculation">
-                    <div class="calculation-line">
-                        <span>Курс:</span>
-                        <span>1 USDT = 83.50 RUB</span>
-                    </div>
-                    <div class="calculation-line">
-                        <span>Сумма в USDT:</span>
-                        <span class="summary-value" id="usdtTotalAmount">- USDT</span>
-                    </div>
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label">Адрес кошелька:</label>
-                    <div class="bank-input">T9ympy3KhgGcVgA5rmj6rmhPoPTBkswrik</div>
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label">Сеть:</label>
-                    <div class="bank-input">TRC-20</div>
-                </div>
-                
-                <div class="modal-buttons">
-                    <button class="modal-button secondary" onclick="backToPaymentMethod()">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад
-                    </button>
-                    <button class="modal-button" onclick="processUsdtPayment()">
-                        <i class="fas fa-check"></i>
-                        Оплачено
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Card Payment Modal -->
-    <div class="modal" id="cardPaymentModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Оплата картой</h2>
-                <button class="close-button" onclick="closeModal('cardPaymentModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="payment-details">
-                    <div class="summary-item">
-                        <span class="summary-label">Сумма к оплате:</span>
-                        <span class="summary-value" id="cardAmount">-</span>
-                    </div>
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label">Номер карты:</label>
-                    <div class="bank-input">5599002119761130</div>
-                </div>
-                
-                <div class="input-group">
-                    <label class="input-label">Получатель:</label>
-                    <div class="bank-input">ЮMoney</div>
-                </div>
-                
-                <div class="modal-buttons">
-                    <button class="modal-button secondary" onclick="backToPaymentMethod()">
-                        <i class="fas fa-arrow-left"></i>
-                        Назад
-                    </button>
-                    <button class="modal-button" onclick="processCardPayment()">
-                        <i class="fas fa-check"></i>
-                        Оплачено
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Processing Modal -->
-    <div class="modal" id="processingModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Обработка платежа</h2>
-            </div>
-            <div class="modal-body">
-                <div class="loading">
-                    <div class="loading-spinner"></div>
-                    <p>Ожидайте, обработка платежа...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- History Modal -->
-    <div class="modal" id="historyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">История операций</h2>
-                <button class="close-button" onclick="closeModal('historyModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="history-list" id="historyList">
-                    <!-- History will be populated by JavaScript -->
-                </div>
-                <button class="modal-button secondary" onclick="closeModal('historyModal')">
-                    <i class="fas fa-times"></i>
-                    Закрыть
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Order Details Modal -->
-    <div class="modal" id="orderDetailsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Детали операции</h2>
-                <button class="close-button" onclick="closeModal('orderDetailsModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="order-summary" id="orderDetailsContent">
-                    <!-- Order details will be populated by JavaScript -->
-                </div>
-                
-                <div class="calculation" style="background: var(--warning-color); color: black; text-align: center;">
-                    <strong>Обработка платежа</strong>
-                </div>
-                
-                <div style="text-align: center; margin: 15px 0;">
-                    Чтобы ускорить процесс обратитесь: 
-                    <a href="https://t.me/mmaajorka" class="support-link" target="_blank">@mmaajorka</a>
-                </div>
-                
-                <button class="modal-button secondary" onclick="closeModal('orderDetailsModal')">
-                    <i class="fas fa-times"></i>
-                    Закрыть
-                </button>
-            </div>
-        </div>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-text">Загрузка</div>
     </div>
 
-    <script>
-        // Инициализация Telegram Web App
-        let tg = window.Telegram.WebApp;
-        tg.expand();
-        tg.enableClosingConfirmation();
-        
-        // Получаем ID пользователя Telegram
-        const userId = tg.initDataUnsafe.user?.id || 'default_user';
-        
-        // Курс доллара
-        const USD_RATE = 83.50;
-        
-        // Полный список серверов с доступным количеством монет
-        const servers = [
-            { name: "№1 | Red", available: getRandomAmount() },
-            { name: "№2 | Green", available: getRandomAmount() },
-            { name: "№3 | Blue", available: getRandomAmount() },
-            { name: "№4 | Yellow", available: getRandomAmount() },
-            { name: "№5 | Orange", available: getRandomAmount() },
-            { name: "№6 | Purple", available: getRandomAmount() },
-            { name: "№7 | Lime", available: getRandomAmount() },
-            { name: "№8 | Pink", available: getRandomAmount() },
-            { name: "№9 | Cherry", available: getRandomAmount() },
-            { name: "№10 | Black", available: getRandomAmount() },
-            { name: "№11 | Indigo", available: getRandomAmount() },
-            { name: "№12 | White", available: getRandomAmount() },
-            { name: "№13 | Magenta", available: getRandomAmount() },
-            { name: "№14 | Crimson", available: getRandomAmount() },
-            { name: "№15 | Gold", available: getRandomAmount() },
-            { name: "№16 | Azure", available: getRandomAmount() },
-            { name: "№17 | Platinum", available: getRandomAmount() },
-            { name: "№18 | Aqua", available: getRandomAmount() },
-            { name: "№19 | Gray", available: getRandomAmount() },
-            { name: "№20 | Ice", available: getRandomAmount() }
-        ];
-        
-        let selectedServer = null;
-        let selectedAmount = 0;
-        let totalPrice = 0;
-        let orderId = null;
-        let paymentMethod = null;
-        let currentOrderDetails = null;
-        
-        // Генерация случайного количества монет от 5.000.000 до 16.000.000
-        function getRandomAmount() {
-            return Math.floor(Math.random() * (16000000 - 5000000 + 1)) + 5000000;
-        }
-        
-        // Генерация уникального номера заказа
-        function generateOrderId() {
-            const timestamp = Date.now().toString(36);
-            const randomStr = Math.random().toString(36).substr(2, 5);
-            return `BR${timestamp}${randomStr}`.toUpperCase();
-        }
-        
-        // Форматирование числа с разделителями тысяч
-        function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-        
-        // Форматирование ввода с разделителями
-        function formatNumberInput(input) {
-            // Сохраняем позицию курсора
-            let cursorPosition = input.selectionStart;
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-vector-square"></i>
+                <span>Graf.Decore</span>
+            </div>
             
-            // Удаляем все нецифровые символы
-            let value = input.value.replace(/\D/g, '');
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Главная</a></li>
+                    <li class="has-mega-menu">
+                        <a href="#products">Товары</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-column">
+                                <h4>Шторы</h4>
+                                <ul>
+                                    <li><a href="#classic">Классические шторы</a></li>
+                                    <li><a href="#modern">Современные шторы</a></li>
+                                    <li><a href="#blackout">Блэкаут шторы</a></li>
+                                    <li><a href="#roman">Римские шторы</a></li>
+                                    <li><a href="#japanese">Японские панели</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Карнизы</h4>
+                                <ul>
+                                    <li><a href="#wooden">Деревянные карнизы</a></li>
+                                    <li><a href="#metal">Металлические карнизы</a></li>
+                                    <li><a href="#plastic">Пластиковые карнизы</a></li>
+                                    <li><a href="#ceiling">Потолочные карнизы</a></li>
+                                    <li><a href="#strings">Струнные системы</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h4>Аксессуары</h4>
+                                <ul>
+                                    <li><a href="#holders">Держатели для штор</a></li>
+                                    <li><a href="#ties">Завязки и крючки</a></li>
+                                    <li><a href="#laces">Ламбрекены</a></li>
+                                    <li><a href="#garters">Подхваты для штор</a></li>
+                                    <li><a href="#decors">Декоративные элементы</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#services">Услуги</a>
+                        <ul class="dropdown">
+                            <li><a href="#consultation">Дизайн-консультация</a></li>
+                            <li><a href="#sewing">Пошив штор</a></li>
+                            <li><a href="#repair">Ремонт штор</a></li>
+                            <li><a href="#cleaning">Химчистка штор</a></li>
+                            <li><a href="#installation">Установка карнизов</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="#styles">Стили</a>
+                        <ul class="dropdown">
+                            <li><a href="#classic-style">Классика</a></li>
+                            <li><a href="#modern-style">Модерн</a></li>
+                            <li><a href="#scandinavian">Скандинавский</a></li>
+                            <li><a href="#provence">Прованс</a></li>
+                            <li><a href="#minimalism">Минимализм</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
             
-            // Форматируем с разделителями
-            if (value.length > 0) {
-                value = formatNumber(parseInt(value));
-            }
-            
-            // Устанавливаем отформатированное значение
-            input.value = value;
-            
-            // Восстанавливаем позицию курсора с учетом добавленных точек
-            let newCursorPosition = cursorPosition;
-            if (value.length > input.value.length) {
-                newCursorPosition -= (value.length - input.value.length);
-            }
-            
-            input.setSelectionRange(newCursorPosition, newCursorPosition);
-            
-            // Вызываем расчет стоимости
-            calculatePrice();
-        }
-        
-        // Парсинг отформатированного числа
-        function parseFormattedNumber(formattedNumber) {
-            return parseInt(formattedNumber.replace(/\./g, '')) || 0;
-        }
-        
-        // Получение истории операций из localStorage
-        function getOrderHistory() {
-            const historyKey = `order_history_${userId}`;
-            const history = localStorage.getItem(historyKey);
-            return history ? JSON.parse(history) : [];
-        }
-        
-        // Сохранение операции в историю
-        function saveOrderToHistory(orderData) {
-            const historyKey = `order_history_${userId}`;
-            const history = getOrderHistory();
-            
-            // Добавляем дату операции
-            orderData.date = new Date().toLocaleString('ru-RU');
-            
-            // Добавляем новую операцию в начало истории
-            history.unshift(orderData);
-            
-            // Сохраняем только последние 50 операций
-            const limitedHistory = history.slice(0, 50);
-            
-            // Сохраняем в localStorage
-            localStorage.setItem(historyKey, JSON.stringify(limitedHistory));
-        }
-        
-        // Отображение истории операций
-        function displayOrderHistory() {
-            const historyList = document.getElementById('historyList');
-            const history = getOrderHistory();
-            
-            if (history.length === 0) {
-                historyList.innerHTML = '<div class="empty-history">История операций пуста</div>';
-                return;
-            }
-            
-            let html = '';
-            history.forEach(order => {
-                html += `
-                    <div class="history-item" onclick="showOrderDetails('${order.orderId}')">
-                        <div class="history-order-id">Заказ #${order.orderId}</div>
-                        <div class="history-details">
-                            <div>Сервер: ${order.server}</div>
-                            <div>Сумма: ${order.amount} монет</div>
-                            <div>Цена: ${order.price} руб.</div>
-                            <div>Способ оплаты: ${order.paymentMethod}</div>
-                            <div>Дата: ${order.date}</div>
+            <div class="header-buttons">
+                <a href="#search" class="header-btn">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#favorites" class="header-btn">
+                    <i class="fas fa-heart"></i>
+                    <span class="count">3</span>
+                </a>
+                <a href="#cart" class="header-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="count">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Салон эксклюзивных штор Graf.Decore</h1>
+            <p>Создаем уют и гармонию в вашем интерьере с помощью красивых и качественных штор. Индивидуальный подход и безупречное качество с 2010 года.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#catalog" class="btn">Каталог товаров</a>
+                <a href="#consultation" class="btn btn-outline">Бесплатная консультация</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>О нашем салоне</h2>
+                <p>Graf.Decore - это салон штор премиум-класса, где вы найдете эксклюзивные решения для вашего интерьера</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Создаем уют в вашем доме с 2010 года</h3>
+                    <p>Наш салон предлагает широкий выбор штор, карнизов и аксессуаров от ведущих европейских производителей. Мы сотрудничаем с лучшими поставщиками тканей из Италии, Франции и Германии.</p>
+                    <p>Наши дизайнеры помогут вам подобрать идеальное решение для любого помещения - от гостиной и спальни до офиса и ресторана. Мы учитываем все нюансы: стиль интерьера, освещенность, функциональность и ваши личные предпочтения.</p>
+                    <p>В нашем салоне вы можете заказать пошив штор по индивидуальным размерам, установку карнизов и профессиональную консультацию по оформлению окон.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">13+</div>
+                            <div class="stat-text">лет на рынке</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2500+</div>
+                            <div class="stat-text">довольных клиентов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-text">гарантия качества</div>
                         </div>
                     </div>
-                `;
-            });
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23f8d7e9'/><text x='300' y='200' font-family='Arial' font-size='24' fill='%235a5a72' text-anchor='middle'>Интерьер салона Graf.Decore</text></svg>" alt="Салон штор Graf.Decore">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+                <p>Мы предлагаем полный спектр услуг по оформлению оконных проемов</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-pencil-alt"></i>
+                    <h3>Дизайн-проект</h3>
+                    <p>Разработаем индивидуальный дизайн-проект оформления окон с учетом стиля вашего интерьера и предпочтений.</p>
+                    <a href="#design" class="btn btn-outline">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Замер и расчет</h3>
+                    <p>Профессиональный замерщик приедет к вам в удобное время и выполнит все необходимые замеры и расчеты.</p>
+                    <a href="#measure" class="btn btn-outline">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cut"></i>
+                    <h3>Пошив штор</h3>
+                    <p>Собственное производство позволяет нам шить шторы любого уровня сложности в кратчайшие сроки.</p>
+                    <a href="#sewing" class="btn btn-outline">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Установка</h3>
+                    <p>Наши мастера аккуратно и профессионально установят карнизы и повесят готовые изделия.</p>
+                    <a href="#installation" class="btn btn-outline">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-soap"></i>
+                    <h3>Химчистка</h3>
+                    <p>Профессиональная химчистка любых видов штор с выездом на дом и последующей установкой.</p>
+                    <a href="#cleaning" class="btn btn-outline">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Ремонт штор</h3>
+                    <p>Отремонтируем любые повреждения штор, карнизов и аксессуаров с гарантией на работы.</p>
+                    <a href="#repair" class="btn btn-outline">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Контакты</h2>
+                <p>Мы всегда рады помочь вам создать идеальный интерьер</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-info-text">
+                            <h3>Адрес</h3>
+                            <p>Киевское шоссе 22-й километр, БЦ «Румянцево»</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-info-text">
+                            <h3>Телефон</h3>
+                            <p>+7 (985) 180-65-65</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-info-text">
+                            <h3>Email</h3>
+                            <p>info@grafdecore.ru</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-info-text">
+                            <h3>Время работы</h3>
+                            <p>Пн-Пт: 9:00 - 20:00<br>Сб: 10:00 - 18:00<br>Вс: 10:00 - 16:00</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-car"></i>
+                        <div class="contact-info-text">
+                            <h3>Парковка</h3>
+                            <p>Бесплатная парковка для клиентов у входа в салон</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Остались вопросы?</h3>
+                    <p>Заполните форму и наш менеджер свяжется с вами в течение 15 минут</p>
+                    
+                    <form id="contactForm" style="margin-top: 25px;">
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" placeholder="Иван Иванов" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Услуга</label>
+                            <select id="service" required>
+                                <option value="">Выберите услугу</option>
+                                <option value="consultation">Дизайн-консультация</option>
+                                <option value="sewing">Пошив штор</option>
+                                <option value="installation">Установка карнизов</option>
+                                <option value="cleaning">Химчистка штор</option>
+                                <option value="repair">Ремонт штор</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" placeholder="Расскажите о вашем проекте..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
             
-            historyList.innerHTML = html;
-        }
-        
-        // Показать детали операции
-        function showOrderDetails(orderId) {
-            const history = getOrderHistory();
-            const order = history.find(item => item.orderId === orderId);
+            <div class="map-container">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=37.423_55.623&z=15" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column left">
+                    <h3>Graf.Decore</h3>
+                    <p>Салон эксклюзивных штор с полным циклом услуг: от дизайна до установки.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column center">
+                    <h3>Наши услуги</h3>
+                    <ul class="footer-links">
+                        <li><a href="#consultation">Дизайн-консультация</a></li>
+                        <li><a href="#sewing">Пошив штор</a></li>
+                        <li><a href="#installation">Установка карнизов</a></li>
+                        <li><a href="#cleaning">Химчистка штор</a></li>
+                        <li><a href="#repair">Ремонт штор</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column right">
+                    <h3>Контакты</h3>
+                    <p>Киевское шоссе 22-й километр, БЦ «Румянцево»</p>
+                    <p>+7 (985) 180-65-65</p>
+                    <p>info@grafdecore.ru</p>
+                    <p>Пн-Пт: 9:00-20:00, Сб: 10:00-18:00, Вс: 10:00-16:00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Graf.Decore. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a');
+            const loader = document.querySelector('.loader');
             
-            if (order) {
-                currentOrderDetails = order;
-                
-                const detailsContent = document.getElementById('orderDetailsContent');
-                detailsContent.innerHTML = `
-                    <div class="summary-item">
-                        <span class="summary-label">Номер заказа:</span>
-                        <span class="summary-value">${order.orderId}</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Сервер:</span>
-                        <span class="summary-value">${order.server}</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Количество валюты:</span>
-                        <span class="summary-value">${order.amount}</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Сумма к оплате:</span>
-                        <span class="summary-value">${order.price}</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Способ оплаты:</span>
-                        <span class="summary-value">${order.paymentMethod}</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Банковский счет:</span>
-                        <span class="summary-value">${order.bankAccount}</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Название счета:</span>
-                        <span class="summary-value">${order.accountName}</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Дата:</span>
-                        <span class="summary-value">${order.date}</span>
-                    </div>
-                `;
-                
-                openModal('orderDetailsModal');
-            }
-        }
-        
-        // Заполнение списка серверов
-        function populateServers() {
-            const serverList = document.getElementById('serverList');
-            serverList.innerHTML = '';
-            
-            servers.forEach(server => {
-                const parts = server.name.split(' | ');
-                const serverNumber = parts[0];
-                const serverName = parts[1];
-                
-                const serverItem = document.createElement('div');
-                serverItem.className = 'server-item';
-                serverItem.innerHTML = `
-                    <div class="server-number">${serverNumber}</div>
-                    <div class="server-name">${serverName}</div>
-                    <div class="server-amount">Доступно: ${formatNumber(server.available)} монет</div>
-                `;
-                
-                serverItem.addEventListener('click', () => {
-                    selectServer(server);
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        
+                        // Show loader
+                        loader.style.display = 'flex';
+                        
+                        // Simulate loading
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                            const targetId = this.getAttribute('href');
+                            const targetElement = document.querySelector(targetId);
+                            if (targetElement) {
+                                window.scrollTo({
+                                    top: targetElement.offsetTop - 100,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }, 800);
+                    }
                 });
-                
-                serverList.appendChild(serverItem);
-            });
-        }
-        
-        // Create animated particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Random size between 2 and 6 pixels
-                const size = Math.random() * 4 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation duration
-                const duration = Math.random() * 20 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                
-                // Random delay
-                particle.style.animationDelay = `-${Math.random() * 20}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Open modal
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
-        }
-        
-        // Close modal
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
-        
-        // Open server modal
-        function openServerModal() {
-            populateServers();
-            openModal('serverModal');
-        }
-        
-        // Open history modal
-        function openHistoryModal() {
-            displayOrderHistory();
-            openModal('historyModal');
-        }
-        
-        // Open support
-        function openSupport() {
-            window.open('https://t.me/mmaajorka', '_blank');
-        }
-        
-        // Select server
-        function selectServer(server) {
-            selectedServer = server;
-            closeModal('serverModal');
-            
-            // Обновляем информацию в модальном окне ввода суммы
-            document.getElementById('selectedServerTitle').textContent = `Покупка на сервере: ${server.name}`;
-            document.getElementById('availableAmount').textContent = `Доступно на сервере: ${formatNumber(server.available)} монет`;
-            
-            // Сбрасываем поле ввода
-            document.getElementById('amountInput').value = '';
-            document.getElementById('amountError').style.display = 'none';
-            document.getElementById('totalPrice').textContent = '0 руб.';
-            document.getElementById('continueButton').disabled = true;
-            
-            // Показываем модальное окно ввода суммы
-            openModal('amountModal');
-        }
-        
-        // Расчет стоимости
-        function calculatePrice() {
-            const amountInput = document.getElementById('amountInput');
-            const amountError = document.getElementById('amountError');
-            const totalPriceElement = document.getElementById('totalPrice');
-            const continueButton = document.getElementById('continueButton');
-            
-            const amount = parseFormattedNumber(amountInput.value);
-            selectedAmount = amount;
-            
-            // Проверка минимальной суммы
-            if (amount < 2500000) {
-                amountError.style.display = 'block';
-                totalPriceElement.textContent = '0 руб.';
-                continueButton.disabled = true;
-                return;
-            }
-            
-            // Проверка доступного количества
-            if (amount > selectedServer.available) {
-                amountError.textContent = `Недостаточно монет на сервере. Максимум: ${formatNumber(selectedServer.available)} монет`;
-                amountError.style.display = 'block';
-                totalPriceElement.textContent = '0 руб.';
-                continueButton.disabled = true;
-                return;
-            }
-            
-            // Скрываем ошибку, если все в порядке
-            amountError.style.display = 'none';
-            
-            // Расчет стоимости (1.000.000 = 105 руб.)
-            totalPrice = (amount / 1000000) * 105;
-            totalPriceElement.textContent = `${totalPrice.toFixed(2)} руб.`;
-            
-            // Активируем кнопку продолжения
-            continueButton.disabled = false;
-        }
-        
-        // Возврат к выбору сервера
-        function backToServerSelection() {
-            closeModal('amountModal');
-            openServerModal();
-        }
-        
-        // Открытие модального окна ввода банковских реквизитов
-        function openBankModal() {
-            closeModal('amountModal');
-            
-            // Сбрасываем поля ввода
-            document.getElementById('bankAccount').value = '';
-            document.getElementById('accountName').value = '';
-            document.getElementById('confirmBankButton').disabled = true;
-            
-            // Показываем модальное окно банковских реквизитов
-            openModal('bankModal');
-        }
-        
-        // Валидация банковских реквизитов
-        function validateBankDetails() {
-            const bankAccount = document.getElementById('bankAccount').value;
-            const accountName = document.getElementById('accountName').value;
-            const confirmButton = document.getElementById('confirmBankButton');
-            
-            // Активируем кнопку, если оба поля заполнены
-            confirmButton.disabled = !(bankAccount.trim() && accountName.trim());
-        }
-        
-        // Возврат к вводу суммы
-        function backToAmountInput() {
-            closeModal('bankModal');
-            openModal('amountModal');
-        }
-        
-        // Открытие модального окна подтверждения
-        function openConfirmationModal() {
-            closeModal('bankModal');
-            
-            // Генерируем уникальный номер заказа
-            orderId = generateOrderId();
-            
-            // Заполняем данные в модальном окне подтверждения
-            document.getElementById('confirmOrderId').textContent = orderId;
-            document.getElementById('confirmServer').textContent = selectedServer.name;
-            document.getElementById('confirmAmount').textContent = `${formatNumber(selectedAmount)} монет`;
-            document.getElementById('confirmPrice').textContent = `${totalPrice.toFixed(2)} руб.`;
-            document.getElementById('confirmBankAccount').textContent = document.getElementById('bankAccount').value;
-            document.getElementById('confirmAccountName').textContent = document.getElementById('accountName').value;
-            
-            // Показываем модальное окно подтверждения
-            openModal('confirmationModal');
-        }
-        
-        // Возврат к вводу банковских реквизитов
-        function backToBankDetails() {
-            closeModal('confirmationModal');
-            openModal('bankModal');
-        }
-        
-        // Открытие модального окна выбора способа оплаты
-        function openPaymentMethodModal() {
-            closeModal('confirmationModal');
-            
-            // Заполняем сумму к оплате
-            document.getElementById('paymentAmount').textContent = `${totalPrice.toFixed(2)} руб.`;
-            
-            // Показываем модальное окно выбора способа оплаты
-            openModal('paymentMethodModal');
-        }
-        
-        // Возврат к подтверждению заказа
-        function backToConfirmation() {
-            closeModal('paymentMethodModal');
-            openModal('confirmationModal');
-        }
-        
-        // Открытие модального окна оплаты USDT
-        function openUsdtPaymentModal() {
-            closeModal('paymentMethodModal');
-            
-            // Заполняем сумму к оплате
-            document.getElementById('usdtAmount').textContent = `${totalPrice.toFixed(2)} руб.`;
-            
-            // Рассчитываем и отображаем сумму в USDT
-            const usdtAmount = (totalPrice / USD_RATE).toFixed(2);
-            document.getElementById('usdtTotalAmount').textContent = `${usdtAmount} USDT`;
-            
-            // Устанавливаем метод оплаты
-            paymentMethod = "USDT (TRC-20)";
-            
-            // Показываем модальное окно оплаты USDT
-            openModal('usdtPaymentModal');
-        }
-        
-        // Открытие модального окна оплаты по карте
-        function openCardPaymentModal() {
-            closeModal('paymentMethodModal');
-            
-            // Заполняем сумму к оплате
-            document.getElementById('cardAmount').textContent = `${totalPrice.toFixed(2)} руб.`;
-            
-            // Устанавливаем метод оплаты
-            paymentMethod = "Карта (ЮМани)";
-            
-            // Показываем модальное окно оплаты по карте
-            openModal('cardPaymentModal');
-        }
-        
-        // Возврат к выбору способа оплаты
-        function backToPaymentMethod() {
-            if (document.getElementById('usdtPaymentModal').classList.contains('active')) {
-                closeModal('usdtPaymentModal');
-            } else {
-                closeModal('cardPaymentModal');
-            }
-            openModal('paymentMethodModal');
-        }
-        
-        // Обработка оплаты USDT
-        function processUsdtPayment() {
-            closeModal('usdtPaymentModal');
-            
-            // Сохраняем заказ в историю
-            saveOrderToHistory({
-                orderId: orderId,
-                server: selectedServer.name,
-                amount: `${formatNumber(selectedAmount)} монет`,
-                price: `${totalPrice.toFixed(2)} руб.`,
-                paymentMethod: paymentMethod,
-                bankAccount: document.getElementById('bankAccount').value,
-                accountName: document.getElementById('accountName').value
             });
             
-            // Показываем модальное окно обработки платежа
-            openModal('processingModal');
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    loader.style.display = 'flex';
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        alert('Ваше сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.');
+                        contactForm.reset();
+                    }, 1500);
+                });
+            }
+
+            // Mobile menu toggle (for future implementation)
+            const menuToggle = document.createElement('div');
+            menuToggle.className = 'menu-toggle';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            document.querySelector('.header-content').appendChild(menuToggle);
             
-            // Через 3 секунды переходим к истории операций
-            setTimeout(() => {
-                closeModal('processingModal');
-                openHistoryModal();
-            }, 3000);
-        }
-        
-        // Обработка оплаты по карте
-        function processCardPayment() {
-            closeModal('cardPaymentModal');
-            
-            // Сохраняем заказ в историю
-            saveOrderToHistory({
-                orderId: orderId,
-                server: selectedServer.name,
-                amount: `${formatNumber(selectedAmount)} монет`,
-                price: `${totalPrice.toFixed(2)} руб.`,
-                paymentMethod: paymentMethod,
-                bankAccount: document.getElementById('bankAccount').value,
-                accountName: document.getElementById('accountName').value
+            menuToggle.addEventListener('click', function() {
+                document.querySelector('.main-nav').classList.toggle('active');
             });
-            
-            // Показываем модальное окно обработки платежа
-            openModal('processingModal');
-            
-            // Через 3 секунды переходим к истории операций
-            setTimeout(() => {
-                closeModal('processingModal');
-                openHistoryModal();
-            }, 3000);
-        }
-        
-        // Инициализация при загрузке
-        document.addEventListener('DOMContentLoaded', () => {
-            tg.ready();
-            createParticles();
         });
     </script>
 </body>
