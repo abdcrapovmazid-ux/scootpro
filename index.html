@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graf.Decore - салон эксклюзивных штор</title>
+    <title>Graf Decor - салон эксклюзивных штор</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -260,15 +260,28 @@
             justify-content: center;
         }
 
+        /* Page sections */
+        .page-section {
+            display: none;
+            padding: 100px 0;
+            min-height: 80vh;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
         /* Hero section */
-        .hero {
+        #home {
             padding: 80px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: block;
         }
 
-        .hero::before {
+        #home::before {
             content: '';
             position: absolute;
             top: -200px;
@@ -280,7 +293,7 @@
             z-index: -1;
         }
 
-        .hero::after {
+        #home::after {
             content: '';
             position: absolute;
             bottom: -300px;
@@ -320,6 +333,7 @@
             border: 2px solid var(--accent-dark);
             font-size: 16px;
             animation: fadeIn 2s ease;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -341,10 +355,6 @@
         }
 
         /* Section styles */
-        section {
-            padding: 100px 0;
-        }
-
         .section-title {
             text-align: center;
             margin-bottom: 70px;
@@ -458,7 +468,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(162, 200, 216, 0.1)" stroke-width="1"/></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width='100' height='100' fill='none'/><path d='M0,50 L100,50 M50,0 L50,100' stroke='rgba(162, 200, 216, 0.1)' stroke-width='1'/></svg>');
             z-index: 0;
         }
 
@@ -654,12 +664,102 @@
             resize: vertical;
         }
 
-        .form-group select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a5a72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 20px center;
-            background-size: 16px;
+        /* Gallery section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent-dark);
+            transform: rotate(90deg);
+        }
+
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-btn {
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-dark);
+            background: var(--white);
+            color: var(--accent-dark);
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-btn:hover {
+            background: var(--accent-dark);
+            color: var(--white);
         }
 
         /* Map */
@@ -869,6 +969,16 @@
                 width: 100%;
                 left: 0;
             }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 24px;
+                cursor: pointer;
+                z-index: 1001;
+            }
         }
 
         @media (max-width: 768px) {
@@ -909,6 +1019,10 @@
             .social-icons {
                 justify-content: center;
             }
+            
+            .modal-buttons {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 576px) {
@@ -933,6 +1047,60 @@
                 font-size: 36px;
             }
         }
+        
+        /* Menu toggle for mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-text);
+        }
+        
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .main-nav > ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: var(--white);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 12px 12px;
+                padding: 20px;
+            }
+            
+            .main-nav.active > ul {
+                display: flex;
+            }
+            
+            .main-nav > ul > li {
+                margin: 5px 0;
+            }
+            
+            .dropdown, .mega-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                width: 100%;
+                display: none;
+                margin-top: 10px;
+            }
+            
+            .main-nav > ul > li:hover .dropdown,
+            .main-nav > ul > li:hover .mega-menu {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -942,75 +1110,108 @@
         <div class="loader-text">Загрузка</div>
     </div>
 
+    <!-- Consultation Modal -->
+    <div class="modal" id="consultationModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Выберите способ консультации</h2>
+            <p>Как вам будет удобнее получить консультацию?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn" id="phoneConsultation">
+                    <i class="fas fa-phone"></i> По телефону
+                </button>
+                <button class="modal-btn" id="storeConsultation">
+                    <i class="fas fa-store"></i> В магазине
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phone Modal -->
+    <div class="modal" id="phoneModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Консультация по телефону</h2>
+            <p>Позвоните нам для бесплатной консультации</p>
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="font-size: 24px; font-weight: bold; color: var(--accent-dark); margin-bottom: 20px;">
+                    <i class="fas fa-phone"></i> +7 (985) 180-65-65
+                </div>
+                <a href="tel:+79851806565" class="btn" style="margin: 10px;">
+                    Позвонить сейчас
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Modal -->
+    <div class="modal" id="addressModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Консультация в магазине</h2>
+            <p>Приходите к нам в салон для личной консультации</p>
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="font-size: 18px; margin-bottom: 20px;">
+                    <i class="fas fa-map-marker-alt"></i><br>
+                    <strong>Адрес:</strong><br>
+                    Киевское шоссе 22-й километр,<br>БЦ «Румянцево»
+                </div>
+                <div style="font-size: 16px; margin-bottom: 20px;">
+                    <strong>Часы работы:</strong><br>
+                    Пн-Пт: 9:00-20:00<br>
+                    Сб: 10:00-18:00<br>
+                    Вс: 10:00-16:00
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">
                 <i class="fas fa-vector-square"></i>
-                <span>Graf.Decore</span>
+                <span>Graf Decor</span>
             </div>
             
             <nav class="main-nav">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
                 <ul>
-                    <li><a href="#home" class="active">Главная</a></li>
+                    <li><a href="#home" class="nav-link active" data-section="home">Главная</a></li>
                     <li class="has-mega-menu">
-                        <a href="#products">Товары</a>
+                        <a href="#products" class="nav-link" data-section="products">Товары</a>
                         <div class="mega-menu">
                             <div class="mega-menu-column">
                                 <h4>Шторы</h4>
                                 <ul>
-                                    <li><a href="#classic">Классические шторы</a></li>
-                                    <li><a href="#modern">Современные шторы</a></li>
-                                    <li><a href="#blackout">Блэкаут шторы</a></li>
-                                    <li><a href="#roman">Римские шторы</a></li>
-                                    <li><a href="#japanese">Японские панели</a></li>
+                                    <li><a href="#classic" class="nav-link" data-section="classic">Классические шторы</a></li>
+                                    <li><a href="#modern" class="nav-link" data-section="modern">Современные шторы</a></li>
+                                    <li><a href="#blackout" class="nav-link" data-section="blackout">Блэкаут шторы</a></li>
                                 </ul>
                             </div>
                             <div class="mega-menu-column">
                                 <h4>Карнизы</h4>
                                 <ul>
-                                    <li><a href="#wooden">Деревянные карнизы</a></li>
-                                    <li><a href="#metal">Металлические карнизы</a></li>
-                                    <li><a href="#plastic">Пластиковые карнизы</a></li>
-                                    <li><a href="#ceiling">Потолочные карнизы</a></li>
-                                    <li><a href="#strings">Струнные системы</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Аксессуары</h4>
-                                <ul>
-                                    <li><a href="#holders">Держатели для штор</a></li>
-                                    <li><a href="#ties">Завязки и крючки</a></li>
-                                    <li><a href="#laces">Ламбрекены</a></li>
-                                    <li><a href="#garters">Подхваты для штор</a></li>
-                                    <li><a href="#decors">Декоративные элементы</a></li>
+                                    <li><a href="#wooden" class="nav-link" data-section="wooden">Деревянные карнизы</a></li>
+                                    <li><a href="#metal" class="nav-link" data-section="metal">Металлические карнизы</a></li>
+                                    <li><a href="#strings" class="nav-link" data-section="strings">Струнные системы</a></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="#services">Услуги</a>
+                        <a href="#services" class="nav-link" data-section="services">Услуги</a>
                         <ul class="dropdown">
-                            <li><a href="#consultation">Дизайн-консультация</a></li>
-                            <li><a href="#sewing">Пошив штор</a></li>
-                            <li><a href="#repair">Ремонт штор</a></li>
-                            <li><a href="#cleaning">Химчистка штор</a></li>
-                            <li><a href="#installation">Установка карнизов</a></li>
+                            <li><a href="#consultation" class="nav-link consultation-btn">Дизайн-консультация</a></li>
+                            <li><a href="#sewing" class="nav-link" data-section="sewing">Пошив штор</a></li>
+                            <li><a href="#installation" class="nav-link" data-section="installation">Установка карнизов</a></li>
                         </ul>
                     </li>
-                    <li class="has-dropdown">
-                        <a href="#styles">Стили</a>
-                        <ul class="dropdown">
-                            <li><a href="#classic-style">Классика</a></li>
-                            <li><a href="#modern-style">Модерн</a></li>
-                            <li><a href="#scandinavian">Скандинавский</a></li>
-                            <li><a href="#provence">Прованс</a></li>
-                            <li><a href="#minimalism">Минимализм</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#gallery">Галерея</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#gallery" class="nav-link" data-section="gallery">Галерея</a></li>
+                    <li><a href="#about" class="nav-link" data-section="about">О нас</a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact">Контакты</a></li>
                 </ul>
             </nav>
             
@@ -1030,24 +1231,24 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Салон эксклюзивных штор Graf.Decore</h1>
+    <!-- Home Section -->
+    <section id="home" class="page-section active">
+        <div class="container hero">
+            <h1>Салон эксклюзивных штор Graf Decor</h1>
             <p>Создаем уют и гармонию в вашем интерьере с помощью красивых и качественных штор. Индивидуальный подход и безупречное качество с 2010 года.</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#catalog" class="btn">Каталог товаров</a>
-                <a href="#consultation" class="btn btn-outline">Бесплатная консультация</a>
+                <a href="#products" class="btn nav-link" data-section="products">Каталог товаров</a>
+                <a href="#consultation" class="btn btn-outline consultation-btn">Бесплатная консультация</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="page-section">
         <div class="container">
             <div class="section-title">
                 <h2>О нашем салоне</h2>
-                <p>Graf.Decore - это салон штор премиум-класса, где вы найдете эксклюзивные решения для вашего интерьера</p>
+                <p>Graf Decor - это салон штор премиум-класса, где вы найдете эксклюзивные решения для вашего интерьера</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -1072,14 +1273,47 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23f8d7e9'/><text x='300' y='200' font-family='Arial' font-size='24' fill='%235a5a72' text-anchor='middle'>Интерьер салона Graf.Decore</text></svg>" alt="Салон штор Graf.Decore">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23f8d7e9'/><text x='300' y='200' font-family='Arial' font-size='24' fill='%235a5a72' text-anchor='middle'>Интерьер салона Graf Decor</text></svg>" alt="Салон штор Graf Decor">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши товары</h2>
+                <p>Широкий ассортимент штор, карнизов и аксессуаров для вашего дома</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f8d7e9'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Классические шторы</text></svg>" alt="Классические шторы">
+                    <div class="category-overlay">
+                        <h3>Классические шторы</h3>
+                        <p>Элегантные решения для традиционных интерьеров</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e6e6fa'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Современные шторы</text></svg>" alt="Современные шторы">
+                    <div class="category-overlay">
+                        <h3>Современные шторы</h3>
+                        <p>Модные и стильные решения для современных интерьеров</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23c5d9e9'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Карнизы</text></svg>" alt="Карнизы">
+                    <div class="category-overlay">
+                        <h3>Карнизы</h3>
+                        <p>Различные виды карнизов для любого типа штор</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section id="services" class="page-section services">
         <div class="container">
             <div class="section-title">
                 <h2>Наши услуги</h2>
@@ -1088,46 +1322,49 @@
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-pencil-alt"></i>
-                    <h3>Дизайн-проект</h3>
-                    <p>Разработаем индивидуальный дизайн-проект оформления окон с учетом стиля вашего интерьера и предпочтений.</p>
-                    <a href="#design" class="btn btn-outline">Подробнее</a>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-ruler-combined"></i>
-                    <h3>Замер и расчет</h3>
-                    <p>Профессиональный замерщик приедет к вам в удобное время и выполнит все необходимые замеры и расчеты.</p>
-                    <a href="#measure" class="btn btn-outline">Подробнее</a>
+                    <h3>Дизайн-консультация</h3>
+                    <p>Профессиональная помощь в выборе штор для вашего интерьера с учетом всех особенностей помещения.</p>
+                    <a href="#consultation" class="btn btn-outline consultation-btn">Заказать консультацию</a>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-cut"></i>
                     <h3>Пошив штор</h3>
                     <p>Собственное производство позволяет нам шить шторы любого уровня сложности в кратчайшие сроки.</p>
-                    <a href="#sewing" class="btn btn-outline">Подробнее</a>
+                    <a href="#sewing" class="btn btn-outline nav-link" data-section="sewing">Подробнее</a>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-tools"></i>
-                    <h3>Установка</h3>
-                    <p>Наши мастера аккуратно и профессионально установят карнизы и повесят готовые изделия.</p>
-                    <a href="#installation" class="btn btn-outline">Подробнее</a>
+                    <h3>Установка карнизов</h3>
+                    <p>Профессиональный монтаж карнизов любой сложности нашими опытными мастерами.</p>
+                    <a href="#installation" class="btn btn-outline nav-link" data-section="installation">Подробнее</a>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-soap"></i>
-                    <h3>Химчистка</h3>
-                    <p>Профессиональная химчистка любых видов штор с выездом на дом и последующей установкой.</p>
-                    <a href="#cleaning" class="btn btn-outline">Подробнее</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="page-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Галерея</h2>
+                <p>Наши работы и продукция</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="2726a599-70f5-4b5e-9616-4a4989377777.jpeg" alt="Graf Decor - Карнизы и шторы">
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-wrench"></i>
-                    <h3>Ремонт штор</h3>
-                    <p>Отремонтируем любые повреждения штор, карнизов и аксессуаров с гарантией на работы.</p>
-                    <a href="#repair" class="btn btn-outline">Подробнее</a>
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f8d7e9'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Пример штор 1</text></svg>" alt="Пример штор 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e6e6fa'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Пример штор 2</text></svg>" alt="Пример штор 2">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="page-section">
         <div class="container">
             <div class="section-title">
                 <h2>Контакты</h2>
@@ -1153,21 +1390,14 @@
                         <i class="fas fa-envelope"></i>
                         <div class="contact-info-text">
                             <h3>Email</h3>
-                            <p>info@grafdecore.ru</p>
+                            <p>info@grafdecor.ru</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-clock"></i>
                         <div class="contact-info-text">
                             <h3>Время работы</h3>
-                            <p>Пн-Пт: 9:00 - 20:00<br>Сб: 10:00 - 18:00<br>Вс: 10:00 - 16:00</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-car"></i>
-                        <div class="contact-info-text">
-                            <h3>Парковка</h3>
-                            <p>Бесплатная парковка для клиентов у входа в салон</p>
+                            <p>Пн-Пт: 9:00-20:00<br>Сб: 10:00-18:00<br>Вс: 10:00-16:00</p>
                         </div>
                     </div>
                 </div>
@@ -1185,27 +1415,12 @@
                             <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
                         </div>
                         <div class="form-group">
-                            <label for="service">Услуга</label>
-                            <select id="service" required>
-                                <option value="">Выберите услугу</option>
-                                <option value="consultation">Дизайн-консультация</option>
-                                <option value="sewing">Пошив штор</option>
-                                <option value="installation">Установка карнизов</option>
-                                <option value="cleaning">Химчистка штор</option>
-                                <option value="repair">Ремонт штор</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="message">Сообщение</label>
                             <textarea id="message" placeholder="Расскажите о вашем проекте..."></textarea>
                         </div>
                         <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
                     </form>
                 </div>
-            </div>
-            
-            <div class="map-container">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=37.423_55.623&z=15" frameborder="0"></iframe>
             </div>
         </div>
     </section>
@@ -1215,7 +1430,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column left">
-                    <h3>Graf.Decore</h3>
+                    <h3>Graf Decor</h3>
                     <p>Салон эксклюзивных штор с полным циклом услуг: от дизайна до установки.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1227,53 +1442,124 @@
                 <div class="footer-column center">
                     <h3>Наши услуги</h3>
                     <ul class="footer-links">
-                        <li><a href="#consultation">Дизайн-консультация</a></li>
-                        <li><a href="#sewing">Пошив штор</a></li>
-                        <li><a href="#installation">Установка карнизов</a></li>
-                        <li><a href="#cleaning">Химчистка штор</a></li>
-                        <li><a href="#repair">Ремонт штор</a></li>
+                        <li><a href="#consultation" class="consultation-btn">Дизайн-консультация</a></li>
+                        <li><a href="#sewing" class="nav-link" data-section="sewing">Пошив штор</a></li>
+                        <li><a href="#installation" class="nav-link" data-section="installation">Установка карнизов</a></li>
                     </ul>
                 </div>
                 <div class="footer-column right">
                     <h3>Контакты</h3>
                     <p>Киевское шоссе 22-й километр, БЦ «Румянцево»</p>
                     <p>+7 (985) 180-65-65</p>
-                    <p>info@grafdecore.ru</p>
-                    <p>Пн-Пт: 9:00-20:00, Сб: 10:00-18:00, Вс: 10:00-16:00</p>
+                    <p>info@grafdecor.ru</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Graf.Decore. Все права защищены.</p>
+                <p>&copy; 2023 Graf Decor. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Loading animation
         document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('a');
             const loader = document.querySelector('.loader');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const consultationBtns = document.querySelectorAll('.consultation-btn');
+            const pageSections = document.querySelectorAll('.page-section');
+            const modals = document.querySelectorAll('.modal');
+            const modalCloseBtns = document.querySelectorAll('.modal-close');
             
-            links.forEach(link => {
+            // Menu toggle for mobile
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Navigation system
+            navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    if (this.getAttribute('href').startsWith('#')) {
+                    if (this.classList.contains('consultation-btn')) {
                         e.preventDefault();
+                        document.getElementById('consultationModal').classList.add('active');
+                        return;
+                    }
+                    
+                    e.preventDefault();
+                    
+                    const targetSection = this.getAttribute('data-section');
+                    if (!targetSection) return;
+                    
+                    // Show loader
+                    loader.style.display = 'flex';
+                    
+                    // Hide menu on mobile after selection
+                    if (window.innerWidth <= 992) {
+                        mainNav.classList.remove('active');
+                    }
+                    
+                    // Simulate loading
+                    setTimeout(() => {
+                        // Hide all sections
+                        pageSections.forEach(section => {
+                            section.classList.remove('active');
+                        });
                         
-                        // Show loader
-                        loader.style.display = 'flex';
+                        // Show target section
+                        document.getElementById(targetSection).classList.add('active');
                         
-                        // Simulate loading
-                        setTimeout(() => {
-                            loader.style.display = 'none';
-                            const targetId = this.getAttribute('href');
-                            const targetElement = document.querySelector(targetId);
-                            if (targetElement) {
-                                window.scrollTo({
-                                    top: targetElement.offsetTop - 100,
-                                    behavior: 'smooth'
-                                });
-                            }
-                        }, 800);
+                        // Update active link
+                        navLinks.forEach(navLink => {
+                            navLink.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Scroll to top
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Hide loader
+                        loader.style.display = 'none';
+                    }, 800);
+                });
+            });
+            
+            // Consultation modal
+            consultationBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('consultationModal').classList.add('active');
+                });
+            });
+            
+            // Phone consultation
+            document.getElementById('phoneConsultation').addEventListener('click', function() {
+                document.getElementById('consultationModal').classList.remove('active');
+                document.getElementById('phoneModal').classList.add('active');
+            });
+            
+            // Store consultation
+            document.getElementById('storeConsultation').addEventListener('click', function() {
+                document.getElementById('consultationModal').classList.remove('active');
+                document.getElementById('addressModal').classList.add('active');
+            });
+            
+            // Close modals
+            modalCloseBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    modals.forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                });
+            });
+            
+            // Close modal when clicking outside
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
                     }
                 });
             });
@@ -1293,15 +1579,12 @@
                     }, 1500);
                 });
             }
-
-            // Mobile menu toggle (for future implementation)
-            const menuToggle = document.createElement('div');
-            menuToggle.className = 'menu-toggle';
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            document.querySelector('.header-content').appendChild(menuToggle);
             
-            menuToggle.addEventListener('click', function() {
-                document.querySelector('.main-nav').classList.toggle('active');
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.main-nav')) {
+                    mainNav.classList.remove('active');
+                }
             });
         });
     </script>
