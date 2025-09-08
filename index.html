@@ -2,696 +2,238 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graf Decor - салон эксклюзивных штор</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DOCOIN - Криптовалюта будущего</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
         }
-
-        :root {
-            --primary: #f9eef5;
-            --secondary: #f0eefc;
-            --accent: #c5d9e9;
-            --accent-dark: #a2c8d8;
-            --text: #5a5a72;
-            --dark-text: #3a3a52;
-            --white: #fff;
-            --shadow: rgba(149, 157, 165, 0.15);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
+        
         body {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             min-height: 100vh;
-            padding-top: 90px;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            touch-action: manipulation;
         }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-
+        
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header styles */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            padding: 15px 0;
-            position: fixed;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--dark-text);
-            display: flex;
-            align-items: center;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .logo i {
-            margin-right: 12px;
-            color: var(--accent-dark);
-            font-size: 36px;
-        }
-
-        /* Main Navigation */
-        .main-nav {
-            display: flex;
-            align-items: center;
-        }
-
-        .main-nav > ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .main-nav > ul > li {
+            max-width: 800px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 40px rgba(200, 0, 0, 0.3);
+            border: 1px solid #500;
             position: relative;
-            margin: 0 5px;
+            overflow: hidden;
+            margin: 20px 0;
         }
-
-        .main-nav > ul > li > a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 12px 18px;
-            display: block;
-            border-radius: 30px;
-            font-size: 16px;
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #500;
+            position: relative;
         }
-
-        .main-nav > ul > li > a:hover {
-            color: var(--accent-dark);
-            background: var(--primary);
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff2a2a;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            letter-spacing: 2px;
         }
-
-        .main-nav > ul > li > a.active {
-            color: var(--accent-dark);
-            background: var(--primary);
+        
+        .header p {
+            color: #aaa;
+            margin-top: 10px;
+            font-size: 1.1em;
         }
-
-        /* Dropdown menus */
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 220px;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-            padding: 10px 0;
-        }
-
-        .main-nav > ul > li:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown li {
-            list-style: none;
-        }
-
-        .dropdown li a {
-            padding: 12px 20px;
-            display: block;
-            color: var(--text);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 15px;
-        }
-
-        .dropdown li a:hover {
-            background: var(--primary);
-            color: var(--accent-dark);
-            padding-left: 25px;
-        }
-
-        /* Mega menu */
-        .mega-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-            display: flex;
-            padding: 25px;
-            gap: 40px;
-        }
-
-        .mega-menu .mega-menu-column {
-            flex: 1;
-        }
-
-        .mega-menu .mega-menu-column h4 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--primary);
-        }
-
-        .mega-menu .mega-menu-column ul {
-            list-style: none;
-        }
-
-        .mega-menu .mega-menu-column ul li {
-            margin-bottom: 10px;
-        }
-
-        .mega-menu .mega-menu-column ul li a {
-            color: var(--text);
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            padding: 8px 0;
-            font-size: 15px;
-        }
-
-        .mega-menu .mega-menu-column ul li a:hover {
-            color: var(--accent-dark);
-            padding-left: 5px;
-        }
-
-        .has-mega-menu:hover .mega-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        /* Header buttons */
-        .header-buttons {
-            display: flex;
-            align-items: center;
+        
+        .coin-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-        }
-
-        .header-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-text);
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .header-btn:hover {
-            background: var(--accent-dark);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        .header-btn .count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--accent-dark);
-            color: var(--white);
-            font-size: 11px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Page sections */
-        .page-section {
-            display: none;
-            padding: 100px 0;
-            min-height: 80vh;
-        }
-
-        .page-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        /* Hero section */
-        #home {
-            padding: 80px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            display: block;
-        }
-
-        #home::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: rgba(162, 200, 216, 0.15);
-            z-index: -1;
-        }
-
-        #home::after {
-            content: '';
-            position: absolute;
-            bottom: -300px;
-            left: -300px;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: rgba(248, 215, 233, 0.2);
-            z-index: -1;
-        }
-
-        .hero h1 {
-            font-size: 54px;
-            margin-bottom: 20px;
-            color: var(--dark-text);
-            animation: fadeIn 1s ease;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--text);
-            animation: fadeIn 1.5s ease;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent-dark);
-            color: var(--white);
-            padding: 16px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            border: 2px solid var(--accent-dark);
-            font-size: 16px;
-            animation: fadeIn 2s ease;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--accent-dark);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent-dark);
-            border: 2px solid var(--accent-dark);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent-dark);
-            color: var(--white);
-        }
-
-        /* Section styles */
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-
-        .section-title h2 {
-            font-size: 42px;
-            color: var(--dark-text);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: var(--accent-dark);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title p {
-            max-width: 700px;
-            margin: 30px auto 0;
-            font-size: 18px;
-        }
-
-        /* About section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-            padding-right: 40px;
-        }
-
-        .about-text h3 {
-            font-size: 32px;
-            margin-bottom: 25px;
-            color: var(--dark-text);
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 17px;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--accent-dark);
-            line-height: 1;
-            margin-bottom: 10px;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .stat-text {
-            font-size: 16px;
-            color: var(--text);
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .about-image:hover {
-            transform: translateY(-10px) rotate(2deg);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Services section */
-        .services {
-            background-color: var(--white);
-            position: relative;
-        }
-
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width='100' height='100' fill='none'/><path d='M0,50 L100,50 M50,0 L50,100' stroke='rgba(162, 200, 216, 0.1)' stroke-width='1'/></svg>');
-            z-index: 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            border: 1px solid rgba(162, 200, 216, 0.2);
-        }
-
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-            border-color: var(--accent);
-        }
-
-        .service-card i {
-            font-size: 60px;
-            color: var(--accent-dark);
-            margin-bottom: 25px;
-        }
-
-        .service-card h3 {
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
-
-        .service-card p {
-            margin-bottom: 25px;
-            font-size: 16px;
-        }
-
-        .service-card .btn {
-            padding: 12px 25px;
-            font-size: 15px;
-        }
-
-        /* Categories section */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .category-card {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            height: 280px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .category-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .category-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 25px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: var(--white);
-        }
-
-        .category-overlay h3 {
-            color: var(--white);
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .category-overlay p {
-            font-size: 15px;
-            opacity: 0.9;
-        }
-
-        /* Contact section */
-        .contact-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: center;
             margin-bottom: 30px;
         }
-
-        .contact-info-item i {
-            font-size: 24px;
-            color: var(--accent-dark);
-            margin-right: 20px;
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 50%;
+        
+        .info-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        
+        .info-label {
+            color: #ff2a2a;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        
+        .info-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .about-section {
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+        
+        .section-title {
+            color: #ff2a2a;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .about-text {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(40, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #500;
+        }
+        
+        .feature-icon {
+            font-size: 2.5em;
+            color: #ff2a2a;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .feature-desc {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        
+        .stats {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: var(--transition);
+            justify-content: space-between;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #333;
         }
-
-        .contact-info-item:hover i {
-            background: var(--accent-dark);
-            color: var(--white);
-            transform: rotate(10deg);
+        
+        .stat {
+            text-align: center;
+            flex: 1;
         }
-
-        .contact-info-text h3 {
-            font-size: 20px;
+        
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ff2a2a;
             margin-bottom: 5px;
         }
-
-        .contact-info-text p {
-            font-size: 16px;
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #aaa;
         }
-
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark-text);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 16px;
-            transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--accent-dark);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(162, 200, 216, 0.3);
-        }
-
-        .form-group textarea {
-            min-height: 180px;
-            resize: vertical;
-        }
-
-        /* Gallery section */
-        .gallery-grid {
+        
+        .menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
         }
-
-        .gallery-item {
+        
+        .menu-item {
+            background: rgba(40, 0, 0, 0.5);
+            padding: 15px;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #500;
         }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        
+        .menu-item:hover {
+            background: rgba(60, 0, 0, 0.7);
+            transform: translateY(-3px);
         }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
+        
+        .menu-icon {
+            font-size: 1.8em;
+            color: #ff2a2a;
+            margin-bottom: 10px;
         }
-
-        /* Modal */
+        
+        .menu-text {
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: rgba(20, 20, 20, 0.95);
+            color: #ff2a2a;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease;
+            border: 1px solid #500;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1000;
+            min-width: 250px;
+        }
+        
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.8em;
+        }
+        
+        /* Стили для модальных окон */
         .modal {
             display: none;
             position: fixed;
@@ -700,185 +242,63 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
+            z-index: 1000;
             justify-content: center;
             align-items: center;
         }
-
-        .modal.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-
+        
         .modal-content {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 15px;
+            padding: 20px;
             width: 90%;
-            text-align: center;
-            position: relative;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid #500;
+            box-shadow: 0 0 30px rgba(200, 0, 0, 0.3);
         }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            color: var(--accent-dark);
-            transform: rotate(90deg);
-        }
-
-        .modal-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .modal-btn {
-            padding: 15px;
-            border-radius: 12px;
-            border: 2px solid var(--accent-dark);
-            background: var(--white);
-            color: var(--accent-dark);
-            font-size: 16px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .modal-btn:hover {
-            background: var(--accent-dark);
-            color: var(--white);
-        }
-
-        /* Map */
-        .map-container {
-            margin-top: 60px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            height: 400px;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-text);
-            color: var(--white);
-            padding: 80px 0 30px;
-            text-align: center;
-        }
-
-        .footer-content {
+        
+        .modal-header {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
-            gap: 40px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            text-align: left;
-        }
-
-        .footer-column h3 {
-            font-size: 22px;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-            color: var(--white);
-        }
-
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-dark);
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-column p {
-            margin-bottom: 20px;
-            opacity: 0.8;
-            font-size: 15px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: var(--transition);
-            font-size: 15px;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--accent-dark);
-            padding-left: 5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .social-icons a {
-            display: flex;
             align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #500;
+        }
+        
+        .modal-title {
+            color: #ff2a2a;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        
+        .telegram-link {
+            display: block;
+            text-align: center;
+            background: #0088cc;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
             text-decoration: none;
-            transition: var(--transition);
-            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
         }
-
-        .social-icons a:hover {
-            background: var(--accent-dark);
-            transform: translateY(-5px);
+        
+        .telegram-link:hover {
+            background: #006699;
         }
-
-        .copyright {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 15px;
-            opacity: 0.7;
-        }
-
-        /* Loading animation */
+        
         .loader {
             display: none;
             position: fixed;
@@ -886,707 +306,397 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            z-index: 9999;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
-
-        .loader-circle {
-            width: 80px;
-            height: 80px;
+        
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 42, 42, 0.3);
             border-radius: 50%;
-            border: 5px solid var(--primary);
-            border-top: 5px solid var(--accent-dark);
+            border-top: 5px solid #ff2a2a;
             animation: spin 1s linear infinite;
-            margin-bottom: 20px;
         }
-
-        .loader-text {
-            font-size: 16px;
-            color: var(--dark-text);
-            letter-spacing: 2px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
-        /* Responsive design */
-        @media (max-width: 1200px) {
-            .main-nav > ul > li > a {
-                padding: 10px 15px;
-                font-size: 15px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            body {
-                padding-top: 80px;
-            }
-            
-            .header-content {
-                flex-direction: column;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            .main-nav {
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
-            
-            .main-nav > ul {
-                flex-wrap: nowrap;
-            }
-            
-            .hero h1 {
-                font-size: 42px;
-            }
-            
-            .section-title h2 {
-                font-size: 36px;
-            }
-            
-            .about-text, .about-image {
-                flex: 100%;
-                padding-right: 0;
-            }
-            
-            .mega-menu {
-                flex-direction: column;
-                width: 100%;
-                left: 0;
-            }
-            
-            .menu-toggle {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                font-size: 24px;
-                cursor: pointer;
-                z-index: 1001;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .section-title h2 {
-                font-size: 32px;
-            }
-            
-            .service-card {
-                padding: 30px 20px;
-            }
-            
-            .contact-form {
-                padding: 30px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 40px;
-            }
-            
-            .footer-column {
-                text-align: center;
-            }
-            
-            .footer-column h3:after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .modal-buttons {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .header-buttons {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .btn {
-                padding: 14px 30px;
-            }
-            
-            .about-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .stat-number {
-                font-size: 36px;
-            }
+        
+        .error-message {
+            color: #ff2a2a;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
         }
         
-        /* Menu toggle for mobile */
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--dark-text);
+        .success-message {
+            color: #0f0;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
         }
         
-        @media (max-width: 992px) {
-            .menu-toggle {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-            
-            .main-nav > ul {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: var(--white);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                border-radius: 0 0 12px 12px;
-                padding: 20px;
-            }
-            
-            .main-nav.active > ul {
-                display: flex;
-            }
-            
-            .main-nav > ul > li {
-                margin: 5px 0;
-            }
-            
-            .dropdown, .mega-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                width: 100%;
-                display: none;
-                margin-top: 10px;
-            }
-            
-            .main-nav > ul > li:hover .dropdown,
-            .main-nav > ul > li:hover .mega-menu {
-                display: block;
-            }
+        .completed-icon {
+            color: #0f0;
+            margin-left: 5px;
+        }
+        
+        .roadmap {
+            margin-bottom: 30px;
+        }
+        
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(40, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ff2a2a;
+        }
+        
+        .roadmap-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff2a2a;
+            margin-right: 15px;
+            min-width: 40px;
+        }
+        
+        .roadmap-content h3 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .roadmap-content p {
+            color: #aaa;
+        }
+        
+        .exchange-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .exchange-list li {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .exchange-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .exchange-name {
+            color: #fff;
+        }
+        
+        .exchange-status {
+            color: #ff2a2a;
+            font-weight: bold;
+        }
+        
+        .available {
+            color: #0f0;
         }
     </style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-circle"></div>
-        <div class="loader-text">Загрузка</div>
+    <div class="container">
+        <div class="header">
+            <h1>DOCOIN</h1>
+            <p>Инновационная криптовалюта для цифровой экономики</p>
+        </div>
+        
+        <div class="coin-info">
+            <div class="info-card">
+                <div class="info-label">Текущая цена</div>
+                <div class="info-value">$0.85</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Рыночная капитализация</div>
+                <div class="info-value">$42.7M</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Объем торгов (24ч)</div>
+                <div class="info-value">$2.1M</div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2 class="section-title">О DOCOIN</h2>
+            <p class="about-text">
+                DOCOIN — это современная криптовалюта, разработанная для обеспечения быстрых, безопасных 
+                и децентрализованных финансовых операций. Наша технология сочетает в себе передовые 
+                алгоритмы консенсуса и экологичный подход к поддержанию сети.
+            </p>
+            <p class="about-text">
+                В отличие от традиционных криптовалют, DOCOIN использует инновационный механизм Proof-of-Stake, 
+                который не требует огромных энергетических затрат, что делает нашу платформу экологически чистой 
+                и устойчивой.
+            </p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <div class="feature-title">Высокая скорость</div>
+                <div class="feature-desc">Более 1000 транзакций в секунду с минимальными комиссиями</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="feature-title">Безопасность</div>
+                <div class="feature-desc">Передовые алгоритмы шифрования и децентрализованная сеть</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                <div class="feature-title">Экологичность</div>
+                <div class="feature-desc">Энергоэффективный алгоритм консенсуса Proof-of-Stake</div>
+            </div>
+        </div>
+        
+        <div class="roadmap">
+            <h2 class="section-title">Дорожная карта</h2>
+            <div class="roadmap-item">
+                <div class="roadmap-number">1</div>
+                <div class="roadmap-content">
+                    <h3>Q3 2023 - Запуск основной сети</h3>
+                    <p>Запуск блокчейна DOCOIN с поддержкой смарт-контрактов и децентрализованных приложений.</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-number">2</div>
+                <div class="roadmap-content">
+                    <h3>Q4 2023 - Листинг на биржах</h3>
+                    <p>DOCOIN будет доступен на ведущих криптовалютных биржах для торговли.</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-number">3</div>
+                <div class="roadmap-content">
+                    <h3>Q1 2024 - Мобильное приложение</h3>
+                    <p>Запуск мобильного кошелька с поддержкой iOS и Android.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu">
+            <div class="menu-item" onclick="openModal('exchanges')">
+                <div class="menu-icon"><i class="fas fa-exchange-alt"></i></div>
+                <div class="menu-text">Биржи</div>
+            </div>
+            <div class="menu-item" onclick="openModal('wallet')">
+                <div class="menu-icon"><i class="fas fa-wallet"></i></div>
+                <div class="menu-text">Кошелек</div>
+            </div>
+            <div class="menu-item" onclick="openModal('community')">
+                <div class="menu-icon"><i class="fas fa-users"></i></div>
+                <div class="menu-text">Сообщество</div>
+            </div>
+            <div class="menu-item" onclick="openModal('about')">
+                <div class="menu-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="menu-text">О проекте</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            DOCOIN © 2023. Все права защищены.
+        </div>
     </div>
 
-    <!-- Consultation Modal -->
-    <div class="modal" id="consultationModal">
+    <!-- Модальное окно бирж -->
+    <div class="modal" id="exchanges-modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h2>Выберите способ консультации</h2>
-            <p>Как вам будет удобнее получить консультацию?</p>
-            <div class="modal-buttons">
-                <button class="modal-btn" id="phoneConsultation">
-                    <i class="fas fa-phone"></i> По телефону
-                </button>
-                <button class="modal-btn" id="storeConsultation">
-                    <i class="fas fa-store"></i> В магазине
-                </button>
+            <div class="modal-header">
+                <h2 class="modal-title">Биржи</h2>
+                <button class="close-modal" onclick="closeModal('exchanges')">&times;</button>
             </div>
+            <p>DOCOIN доступен на следующих биржах:</p>
+            <ul class="exchange-list">
+                <li>
+                    <span class="exchange-name">Binance</span>
+                    <span class="exchange-status available">Доступен</span>
+                </li>
+                <li>
+                    <span class="exchange-name">Coinbase</span>
+                    <span class="exchange-status">Скоро</span>
+                </li>
+                <li>
+                    <span class="exchange-name">Kraken</span>
+                    <span class="exchange-status">Скоро</span>
+                </li>
+                <li>
+                    <span class="exchange-name">Huobi</span>
+                    <span class="exchange-status available">Доступен</span>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <!-- Phone Modal -->
-    <div class="modal" id="phoneModal">
+    <!-- Модальное окно кошелька -->
+    <div class="modal" id="wallet-modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h2>Консультация по телефону</h2>
-            <p>Позвоните нам для бесплатной консультации</p>
-            <div style="text-align: center; margin: 30px 0;">
-                <div style="font-size: 24px; font-weight: bold; color: var(--accent-dark); margin-bottom: 20px;">
-                    <i class="fas fa-phone"></i> +7 (985) 180-65-65
-                </div>
-                <a href="tel:+79851806565" class="btn" style="margin: 10px;">
-                    Позвонить сейчас
-                </a>
+            <div class="modal-header">
+                <h2 class="modal-title">Кошелек</h2>
+                <button class="close-modal" onclick="closeModal('wallet')">&times;</button>
             </div>
+            <p>Доступные кошельки для хранения DOCOIN:</p>
+            <ul class="exchange-list">
+                <li>
+                    <span class="exchange-name">Официальный веб-кошелек</span>
+                    <span class="exchange-status available">Доступен</span>
+                </li>
+                <li>
+                    <span class="exchange-name">Мобильное приложение</span>
+                    <span class="exchange-status">Скоро</span>
+                </li>
+                <li>
+                    <span class="exchange-name">Аппаратный кошелек</span>
+                    <span class="exchange-status">В разработке</span>
+                </li>
+            </ul>
+            <p style="margin-top: 20px; color: #ff2a2a; font-weight: bold;">
+                Никогда не храните большие суммы на биржах. Используйте надежные кошельки!
+            </p>
         </div>
     </div>
 
-    <!-- Address Modal -->
-    <div class="modal" id="addressModal">
+    <!-- Модальное окно сообщества -->
+    <div class="modal" id="community-modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h2>Консультация в магазине</h2>
-            <p>Приходите к нам в салон для личной консультации</p>
-            <div style="text-align: center; margin: 30px 0;">
-                <div style="font-size: 18px; margin-bottom: 20px;">
-                    <i class="fas fa-map-marker-alt"></i><br>
-                    <strong>Адрес:</strong><br>
-                    Киевское шоссе 22-й километр,<br>БЦ «Румянцево»
-                </div>
-                <div style="font-size: 16px; margin-bottom: 20px;">
-                    <strong>Часы работы:</strong><br>
-                    Пн-Пт: 9:00-20:00<br>
-                    Сб: 10:00-18:00<br>
-                    Вс: 10:00-16:00
-                </div>
+            <div class="modal-header">
+                <h2 class="modal-title">Сообщество</h2>
+                <button class="close-modal" onclick="closeModal('community')">&times;</button>
             </div>
+            <p>Присоединяйтесь к нашему сообществу:</p>
+            <a href="https://t.me/+bFN-tmt4SsVjMDIy" target="_blank" class="telegram-link">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+            <a href="#" class="telegram-link" style="background: #1da1f2;">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="#" class="telegram-link" style="background: #4267b2;">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" class="telegram-link" style="background: #ff4500;">
+                <i class="fab fa-reddit"></i> Reddit
+            </a>
         </div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <i class="fas fa-vector-square"></i>
-                <span>Graf Decor</span>
+    <!-- Модальное окно о проекте -->
+    <div class="modal" id="about-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">О проекте</h2>
+                <button class="close-modal" onclick="closeModal('about')">&times;</button>
             </div>
-            
-            <nav class="main-nav">
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home" class="nav-link active" data-section="home">Главная</a></li>
-                    <li class="has-mega-menu">
-                        <a href="#products" class="nav-link" data-section="products">Товары</a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-column">
-                                <h4>Шторы</h4>
-                                <ul>
-                                    <li><a href="#classic" class="nav-link" data-section="classic">Классические шторы</a></li>
-                                    <li><a href="#modern" class="nav-link" data-section="modern">Современные шторы</a></li>
-                                    <li><a href="#blackout" class="nav-link" data-section="blackout">Блэкаут шторы</a></li>
-                                </ul>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h4>Карнизы</h4>
-                                <ul>
-                                    <li><a href="#wooden" class="nav-link" data-section="wooden">Деревянные карнизы</a></li>
-                                    <li><a href="#metal" class="nav-link" data-section="metal">Металлические карнизы</a></li>
-                                    <li><a href="#strings" class="nav-link" data-section="strings">Струнные системы</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="has-dropdown">
-                        <a href="#services" class="nav-link" data-section="services">Услуги</a>
-                        <ul class="dropdown">
-                            <li><a href="#consultation" class="nav-link consultation-btn">Дизайн-консультация</a></li>
-                            <li><a href="#sewing" class="nav-link" data-section="sewing">Пошив штор</a></li>
-                            <li><a href="#installation" class="nav-link" data-section="installation">Установка карнизов</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#gallery" class="nav-link" data-section="gallery">Галерея</a></li>
-                    <li><a href="#about" class="nav-link" data-section="about">О нас</a></li>
-                    <li><a href="#contact" class="nav-link" data-section="contact">Контакты</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-buttons">
-                <a href="#search" class="header-btn">
-                    <i class="fas fa-search"></i>
-                </a>
-                <a href="#favorites" class="header-btn">
-                    <i class="fas fa-heart"></i>
-                    <span class="count">3</span>
-                </a>
-                <a href="#cart" class="header-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="count">2</span>
-                </a>
-            </div>
+            <p>DOCOIN — это криптовалюта нового поколения, созданная для обеспечения быстрых, безопасных и децентрализованных финансовых операций.</p>
+            <p>Наша миссия — сделать цифровые активы доступными для каждого, обеспечивая при этом высокий уровень безопасности и экологичности.</p>
+            <p>Технические особенности:</p>
+            <ul class="exchange-list">
+                <li>Алгоритм консенсуса: Proof-of-Stake</li>
+                <li>Время блока: 5 секунд</li>
+                <li>Общее предложение: 100,000,000 DOCOIN</li>
+                <li>Награда за стейкинг: 5% годовых</li>
+            </ul>
         </div>
-    </header>
+    </div>
 
-    <!-- Home Section -->
-    <section id="home" class="page-section active">
-        <div class="container hero">
-            <h1>Салон эксклюзивных штор Graf Decor</h1>
-            <p>Создаем уют и гармонию в вашем интерьере с помощью красивых и качественных штор. Индивидуальный подход и безупречное качество с 2010 года.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#products" class="btn nav-link" data-section="products">Каталог товаров</a>
-                <a href="#consultation" class="btn btn-outline consultation-btn">Бесплатная консультация</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="page-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>О нашем салоне</h2>
-                <p>Graf Decor - это салон штор премиум-класса, где вы найдете эксклюзивные решения для вашего интерьера</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Создаем уют в вашем доме с 2010 года</h3>
-                    <p>Наш салон предлагает широкий выбор штор, карнизов и аксессуаров от ведущих европейских производителей. Мы сотрудничаем с лучшими поставщиками тканей из Италии, Франции и Германии.</p>
-                    <p>Наши дизайнеры помогут вам подобрать идеальное решение для любого помещения - от гостиной и спальни до офиса и ресторана. Мы учитываем все нюансы: стиль интерьера, освещенность, функциональность и ваши личные предпочтения.</p>
-                    <p>В нашем салоне вы можете заказать пошив штор по индивидуальным размерам, установку карнизов и профессиональную консультацию по оформлению окон.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">13+</div>
-                            <div class="stat-text">лет на рынке</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2500+</div>
-                            <div class="stat-text">довольных клиентов</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-text">гарантия качества</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23f8d7e9'/><text x='300' y='200' font-family='Arial' font-size='24' fill='%235a5a72' text-anchor='middle'>Интерьер салона Graf Decor</text></svg>" alt="Салон штор Graf Decor">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="page-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Наши товары</h2>
-                <p>Широкий ассортимент штор, карнизов и аксессуаров для вашего дома</p>
-            </div>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f8d7e9'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Классические шторы</text></svg>" alt="Классические шторы">
-                    <div class="category-overlay">
-                        <h3>Классические шторы</h3>
-                        <p>Элегантные решения для традиционных интерьеров</p>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e6e6fa'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Современные шторы</text></svg>" alt="Современные шторы">
-                    <div class="category-overlay">
-                        <h3>Современные шторы</h3>
-                        <p>Модные и стильные решения для современных интерьеров</p>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23c5d9e9'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Карнизы</text></svg>" alt="Карнизы">
-                    <div class="category-overlay">
-                        <h3>Карнизы</h3>
-                        <p>Различные виды карнизов для любого типа штор</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="page-section services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Наши услуги</h2>
-                <p>Мы предлагаем полный спектр услуг по оформлению оконных проемов</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-pencil-alt"></i>
-                    <h3>Дизайн-консультация</h3>
-                    <p>Профессиональная помощь в выборе штор для вашего интерьера с учетом всех особенностей помещения.</p>
-                    <a href="#consultation" class="btn btn-outline consultation-btn">Заказать консультацию</a>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-cut"></i>
-                    <h3>Пошив штор</h3>
-                    <p>Собственное производство позволяет нам шить шторы любого уровня сложности в кратчайшие сроки.</p>
-                    <a href="#sewing" class="btn btn-outline nav-link" data-section="sewing">Подробнее</a>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tools"></i>
-                    <h3>Установка карнизов</h3>
-                    <p>Профессиональный монтаж карнизов любой сложности нашими опытными мастерами.</p>
-                    <a href="#installation" class="btn btn-outline nav-link" data-section="installation">Подробнее</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="page-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Галерея</h2>
-                <p>Наши работы и продукция</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="2726a599-70f5-4b5e-9616-4a4989377777.jpeg" alt="Graf Decor - Карнизы и шторы">
-                </div>
-                <div class="gallery-item">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f8d7e9'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Пример штор 1</text></svg>" alt="Пример штор 1">
-                </div>
-                <div class="gallery-item">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e6e6fa'/><text x='200' y='150' font-family='Arial' font-size='20' fill='%235a5a72' text-anchor='middle'>Пример штор 2</text></svg>" alt="Пример штор 2">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="page-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Контакты</h2>
-                <p>Мы всегда рады помочь вам создать идеальный интерьер</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="contact-info-text">
-                            <h3>Адрес</h3>
-                            <p>Киевское шоссе 22-й километр, БЦ «Румянцево»</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone"></i>
-                        <div class="contact-info-text">
-                            <h3>Телефон</h3>
-                            <p>+7 (985) 180-65-65</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div class="contact-info-text">
-                            <h3>Email</h3>
-                            <p>info@grafdecor.ru</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-clock"></i>
-                        <div class="contact-info-text">
-                            <h3>Время работы</h3>
-                            <p>Пн-Пт: 9:00-20:00<br>Сб: 10:00-18:00<br>Вс: 10:00-16:00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Остались вопросы?</h3>
-                    <p>Заполните форму и наш менеджер свяжется с вами в течение 15 минут</p>
-                    
-                    <form id="contactForm" style="margin-top: 25px;">
-                        <div class="form-group">
-                            <label for="name">Ваше имя</label>
-                            <input type="text" id="name" placeholder="Иван Иванов" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон</label>
-                            <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <textarea id="message" placeholder="Расскажите о вашем проекте..."></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column left">
-                    <h3>Graf Decor</h3>
-                    <p>Салон эксклюзивных штор с полным циклом услуг: от дизайна до установки.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column center">
-                    <h3>Наши услуги</h3>
-                    <ul class="footer-links">
-                        <li><a href="#consultation" class="consultation-btn">Дизайн-консультация</a></li>
-                        <li><a href="#sewing" class="nav-link" data-section="sewing">Пошив штор</a></li>
-                        <li><a href="#installation" class="nav-link" data-section="installation">Установка карнизов</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column right">
-                    <h3>Контакты</h3>
-                    <p>Киевское шоссе 22-й километр, БЦ «Румянцево»</p>
-                    <p>+7 (985) 180-65-65</p>
-                    <p>info@grafdecor.ru</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Graf Decor. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Индикатор загрузки -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loader = document.querySelector('.loader');
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainNav = document.querySelector('.main-nav');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const consultationBtns = document.querySelectorAll('.consultation-btn');
-            const pageSections = document.querySelectorAll('.page-section');
-            const modals = document.querySelectorAll('.modal');
-            const modalCloseBtns = document.querySelectorAll('.modal-close');
+        // Основные переменные
+        let currentPrice = 0.85;
+        let marketCap = 42700000;
+        let volume = 2100000;
+        
+        // Инициализация
+        function init() {
+            updatePriceDisplay();
             
-            // Menu toggle for mobile
-            menuToggle.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-            });
+            // Обновление цены каждые 30 секунд
+            setInterval(updatePrice, 30000);
+        }
+        
+        // Обновление цены (имитация)
+        function updatePrice() {
+            // Имитация изменения цены
+            const changePercent = (Math.random() - 0.5) * 0.1;
+            currentPrice = Math.max(0.5, currentPrice * (1 + changePercent));
+            marketCap = Math.max(30000000, marketCap * (1 + changePercent));
+            volume = Math.max(1000000, volume * (1 + (Math.random() - 0.3) * 0.2));
             
-            // Navigation system
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (this.classList.contains('consultation-btn')) {
-                        e.preventDefault();
-                        document.getElementById('consultationModal').classList.add('active');
-                        return;
-                    }
-                    
-                    e.preventDefault();
-                    
-                    const targetSection = this.getAttribute('data-section');
-                    if (!targetSection) return;
-                    
-                    // Show loader
-                    loader.style.display = 'flex';
-                    
-                    // Hide menu on mobile after selection
-                    if (window.innerWidth <= 992) {
-                        mainNav.classList.remove('active');
-                    }
-                    
-                    // Simulate loading
-                    setTimeout(() => {
-                        // Hide all sections
-                        pageSections.forEach(section => {
-                            section.classList.remove('active');
-                        });
-                        
-                        // Show target section
-                        document.getElementById(targetSection).classList.add('active');
-                        
-                        // Update active link
-                        navLinks.forEach(navLink => {
-                            navLink.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                        
-                        // Scroll to top
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Hide loader
-                        loader.style.display = 'none';
-                    }, 800);
-                });
-            });
-            
-            // Consultation modal
-            consultationBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.getElementById('consultationModal').classList.add('active');
-                });
-            });
-            
-            // Phone consultation
-            document.getElementById('phoneConsultation').addEventListener('click', function() {
-                document.getElementById('consultationModal').classList.remove('active');
-                document.getElementById('phoneModal').classList.add('active');
-            });
-            
-            // Store consultation
-            document.getElementById('storeConsultation').addEventListener('click', function() {
-                document.getElementById('consultationModal').classList.remove('active');
-                document.getElementById('addressModal').classList.add('active');
-            });
-            
-            // Close modals
-            modalCloseBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    modals.forEach(modal => {
-                        modal.classList.remove('active');
-                    });
-                });
-            });
-            
-            // Close modal when clicking outside
-            modals.forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                    }
-                });
-            });
-            
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    loader.style.display = 'flex';
-                    
-                    // Simulate form submission
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        alert('Ваше сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.');
-                        contactForm.reset();
-                    }, 1500);
-                });
+            updatePriceDisplay();
+        }
+        
+        // Обновление отображения цены
+        function updatePriceDisplay() {
+            const priceElements = document.querySelectorAll('.info-value');
+            if (priceElements.length >= 3) {
+                priceElements[0].textContent = '$' + currentPrice.toFixed(2);
+                priceElements[1].textContent = '$' + formatNumber(marketCap);
+                priceElements[2].textContent = '$' + formatNumber(volume);
             }
+        }
+        
+        // Форматирование чисел
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(2) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(2) + 'K';
+            }
+            return num.toFixed(2);
+        }
+        
+        // Показать уведомление
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
             
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.main-nav')) {
-                    mainNav.classList.remove('active');
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 400);
+            }, 3000);
+        }
+        
+        // Функции для модальных окон
+        function openModal(modalType) {
+            document.getElementById(modalType + '-modal').style.display = 'flex';
+        }
+        
+        function closeModal(modalType) {
+            document.getElementById(modalType + '-modal').style.display = 'none';
+        }
+        
+        // Закрытие модальных окон при клике вне их
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
                 }
             });
         });
+        
+        // Инициализация при загрузке
+        window.addEventListener('load', init);
     </script>
 </body>
 </html>
